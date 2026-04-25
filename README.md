@@ -2,7 +2,7 @@
 
 ## Overview
 
-EduBuddy is an AI-powered chatbot for PLACED EdTech services. Backend powered by Flask + Groq API. Minimal static frontend.
+EduBuddy is an AI-powered chatbot for PLACED EdTech services. Backend powered by FastAPI + Groq API. Minimal static frontend.
 
 ## Prerequisites
 
@@ -30,16 +30,16 @@ pip install -r requirements.txt
 Create `.env` file in root:
 
 ```
-GROQ_API_KEY=your_groq_api_key_here
+API_KEY=your_groq_api_key_here
 ```
 
-### 4. Activate Backend (app.py)
+### 4. Activate Backend (app_fastapi.py)
 
 ```
-python app.py
+python app_fastapi.py
 ```
 
-- Starts Flask server at http://localhost:5000
+- Starts FastAPI server at http://localhost:5000
 - `/predict` endpoint ready for POST requests.
 
 ### 5. Access Frontend (standalone-frontend/base.html)
@@ -67,10 +67,6 @@ python -m http.server 8000
 ## Troubleshooting
 
 - Backend errors? Check terminal, ensure GROQ_API_KEY set.
-- CORS issues? Flask-CORS enabled.
+- CORS issues? check if the endpoint is defined in origins list.
 - Frontend not connecting? Verify backend running on port 5000.
 - Missing images/JS? All assets in `standalone-frontend/`.
-
-## Alternative: Flask Integrated
-
-Serve via Flask: Uncomment `@app.route("/")` in app.py, `python app.py`, visit http://localhost:5000 (uses templates/base.html).
