@@ -2,12 +2,14 @@ import datetime
 from dotenv import load_dotenv
 import os
 import traceback
+from functools import lru_cache
 
 from agent import *
 
 load_dotenv(find_dotenv())
-GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+API_KEY = os.getenv("API_KEY")
 
+@lru_cache
 def chat(message: str = "") -> str:
     """
     Process a single chat message for Flask /predict endpoint.
@@ -17,16 +19,34 @@ def chat(message: str = "") -> str:
 
     try:
         agent = Agent(
-            model="openai/gpt-oss-120b",
+            model="llama-3.1-8b-instant",
             base_url="https://api.groq.com/openai/v1",
-            api_key=GROQ_API_KEY,
-            system_prompt="You are an AI chatbot assistant called EduBuddy for an EdTech company called PLACED (found and managed by Abhishek AS[CEO]) located in Trivandrum, Kerala, you are an assistant/helper to the users that may use the website to ask about Placement Assistance, services provided by PLACED(Placement Assistance and Recrutemnt training in colleges and schools). keep the responses short and concise and structure the responses removing any star(*) charaters and showing time always in 12 hour format when asked about time."
+            api_key=API_KEY,
+            system_prompt="You are an AI chatbot assistant called EduBuddy for an EdTech company called PLACED, you are an assistant/helper to the users that may use the website to ask about Placement Assistance, services provided by PLACED. keep the responses short and concise."
         )
 
         @agent.context
         def time_context() -> str:
             return (
-                f"Current date and time: {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n"
+                f"Current date and time: {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n",
+                "Only tell time when asked about\n"
+                "Always display time in 12 hour format\n"
+            )
+            
+        @agent.context
+        def structure_context() -> str:
+            return (
+                "Structure the responses with plain text with no asterisks\n"
+            )
+
+        @agent.context
+        def company_context() -> str:
+            return (
+                "Company Name : PLACED\n",
+                "Location : Kowdiar, Trivandrum, Kerala, India\n",
+                "Type :  EdTech (Education Technology)\n",
+                "CEO : Abhishek AS\n",
+                "Focus : Placement Assistance for schools and colleges and provide EdTech services\n"
             )
 
         @agent.context
