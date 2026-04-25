@@ -5,16 +5,16 @@ import requests
 from tools import *
 
 load_dotenv()
-GROQ_API_KEY = os.getenv("GROQ_API_KEY")
-if not GROQ_API_KEY:
-    raise ValueError("GROQ_API_KEY not set")
+API_KEY = os.getenv("API_KEY")
+if not API_KEY:
+    raise ValueError("API_KEY not set")
 
 @dataclass
 class Agent:
-    system_prompt: str = "You are an AI chatbot assistant called EduBuddy for an EdTech company called PLACED (found and managed by Abhishek AS[CEO]) located in Trivandrum, Kerala, you are an assistant/helper to the users that may use the website to ask about Placement Assistance, services provided by PLACED(Placement Assistance and Recrutemnt training in colleges and schools). keep the responses short and concise and structure the responses removing any star(*) charaters and showing time always in 12 hour format when asked about time."
-    model: str = "openai/gpt-oss-120b"
+    system_prompt: str = "You are an AI chatbot assistant called EduBuddy for an EdTech company called PLACED, you are an assistant/helper to the users that may use the website to ask about Placement Assistance, services provided by PLACED. keep the responses short and concise."
+    model: str = "llama-3.1-8b-instant"
     base_url: str = "https://api.groq.com/openai/v1"
-    api_key: str = GROQ_API_KEY
+    api_key: str = API_KEY
     tools: Tools = field(default_factory=Tools)
     contexts: dict[str, Callable[[], str]] = field(default_factory=dict)
     messages: list[dict[str, Any]] = field(default_factory=list)
