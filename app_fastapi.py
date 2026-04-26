@@ -2,8 +2,6 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import uvicorn
-from functools import lru_cache
-
 from chat import *
 
 app = FastAPI()
@@ -11,7 +9,7 @@ app = FastAPI()
 origins = [
     "http://localhost:5500",
     "http://127.0.0.1:5500",
-    "https://edubuddy-chatbot.onrender.com/",
+    "https://edubuddy-chatbot.onrender.com",
     # "https://your-domain.com",  # Production domain
 ]
 
@@ -30,7 +28,6 @@ async def main():
 class PredictRequest(BaseModel):
     message: str = ""
 
-@lru_cache
 @app.post("/predict")
 async def predict(data: PredictRequest):
     text = data.message
