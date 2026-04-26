@@ -46,7 +46,7 @@ class Chatbox {
         let msg1 = { name: "User", message: text1 }
         this.messages.push(msg1);
 
-        fetch('https://edubuddy-chatbot.onrender.com/', {
+        fetch('https://edubuddy-chatbot.onrender.com/predict', {
             method: 'POST',
             body: JSON.stringify({ message: text1 }),
             mode: 'cors',
@@ -63,7 +63,7 @@ class Chatbox {
 
         }).catch((error) => {
             console.error('Error:', error);
-            let msg2 = { name: "EduBuddy", message: "Sorry, backend not responding. Ensure python app.py is running on port 5000." };
+            let msg2 = { name: "EduBuddy", message: "Sorry, the server is not responding. Please try again later." };
             this.messages.push(msg2);
             this.updateChatText(chatbox)
             textField.value = ''
