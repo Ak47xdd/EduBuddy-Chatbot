@@ -2,14 +2,11 @@ import datetime
 from dotenv import load_dotenv
 import os
 import traceback
-from functools import lru_cache
-
 from agent import *
 
 load_dotenv(find_dotenv())
 API_KEY = os.getenv("API_KEY")
 
-@lru_cache
 def chat(message: str = "") -> str:
     """
     Process a single chat message for Flask /predict endpoint.
