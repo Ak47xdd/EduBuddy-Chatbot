@@ -27,7 +27,7 @@ def chat(message: str = "") -> str:
             return (
                 f"Current date and time: {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n",
                 "Only tell time when asked about\n"
-                "Always display time in 12 hour format\n"
+                "Always display time in 12 hour format"
             )
             
         @agent.context
