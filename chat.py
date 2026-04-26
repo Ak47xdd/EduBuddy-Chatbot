@@ -48,7 +48,7 @@ def chat(message: str = "") -> str:
 
         @agent.context
         def page_instructions_context() -> str:
-            ...
+            pass
 
         response = agent.chat(message).strip()
         return response if response else "Sorry, try again later."
