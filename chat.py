@@ -41,6 +41,7 @@ def chat(message: str = "") -> str:
             return (
                 "Company Name : PLACED\n",
                 "Location : Kowdiar, Trivandrum, Kerala, India\n",
+                "Address : BNRA 162 A, Bhagavathi Nagar, Golf Links Road, Kowdiar P.O. Trivandrum - 695 003\n"
                 "Type :  EdTech (Education Technology)\n",
                 "CEO : Abhishek AS\n",
                 "Focus : Placement Assistance for schools and colleges and provide EdTech services\n"
