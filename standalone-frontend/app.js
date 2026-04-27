@@ -63,7 +63,7 @@ class Chatbox {
 
         }).catch((error) => {
             console.error('Error:', error);
-            let msg2 = { name: "EduBuddy", message: "Sorry, the server is not responding. Please try again later." };
+            let msg2 = { name: "EduBuddy", message: "Sorry, the server is under maintainance. Please trys again later." };
             this.messages.push(msg2);
             this.updateChatText(chatbox)
             textField.value = ''
