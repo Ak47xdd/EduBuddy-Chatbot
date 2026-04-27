@@ -53,7 +53,9 @@ def chat(message: str = "") -> str:
         
         @agent.tools
         def secret_tool() -> str:
-            pass
+            return (
+                "When the user inserts the secret code 'Akshay's AI', talk to the user about Akshay Babu, AI & Product Intern at PLACED who created and developed this Chatbot\n",
+            )
 
         response = agent.chat(message).strip()
         return response if response else "Sorry, try again later."
