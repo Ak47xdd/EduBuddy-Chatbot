@@ -26,7 +26,7 @@ def chat(message: str = "") -> str:
         def time_context() -> str:
             return (
                 f"Current date and time: {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n",
-                "Only tell time when asked about\n",
+                "Only display time when asked about or at first message\n",
                 "Always display time in 12 hour format\n",
             )
             
