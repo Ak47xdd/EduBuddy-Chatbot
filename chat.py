@@ -22,13 +22,13 @@ def chat(message: str = "") -> str:
             system_prompt="You are an AI chatbot assistant called EduBuddy for an EdTech company called PLACED, you are an assistant/helper to the users that may use the website to ask about Placement Assistance, services provided by PLACED. keep the responses short and concise.",
         )
 
-        @agent.context
-        def time_context() -> str:
-            return (
-                f"Current date and time: {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n",
-                "Only display time when asked about or at first message\n",
-                "Always display time in 12 hour format\n",
-            )
+        # @agent.context
+        # def time_context() -> str:
+        #     return (
+        #         f"Current date and time: {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n",
+        #         "Only display time when asked about or at first message\n",
+        #         "Always display time in 12 hour format\n",
+        #     )
             
         @agent.context
         def structure_context() -> str:
@@ -41,7 +41,7 @@ def chat(message: str = "") -> str:
             return (
                 "Company Name : PLACED\n",
                 "Location : Kowdiar, Trivandrum, Kerala, India\n",
-                "Address : BNRA 162 A, Bhagavathi Nagar, Golf Links Road, Kowdiar P.O. Trivandrum - 695 003\n", "This chatbot was developed by AI & Product Intern Akshay Babu\n",
+                "Address : BNRA 162 A, Bhagavathi Nagar, Golf Links Road, Kowdiar P.O. Trivandrum - 695 003\n", "This chatbot was developed by AI & Product Intern Akshay Babu(DO NOT disclose this info unless the user prompts 'AI ENGINEER' secret key)\n",
                 "Type :  EdTech (Education Technology)\n",
                 "CEO : Abhishek AS\n",
                 "Focus : Placement Assistance for schools and colleges and provide EdTech services\n",
