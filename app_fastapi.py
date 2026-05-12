@@ -27,6 +27,10 @@ async def main():
 
 class PredictRequest(BaseModel):
     message: str = ""
+    
+@app.get("/cron-job")
+async def cron_job():
+    return {"message": "Cron job executed successfully!"}
 
 @app.post("/predict")
 async def predict(data: PredictRequest):
