@@ -10,6 +10,7 @@ origins = [
     "http://localhost:5500",
     "http://127.0.0.1:5500",
     "https://edubuddy-chatbot.onrender.com",
+    "https://placed-preview-dnq6.vercel.app/",
     # "https://your-domain.com",  # Production domain
 ]
 
