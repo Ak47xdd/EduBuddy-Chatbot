@@ -15,9 +15,7 @@ import time
 import requests
 from bs4 import BeautifulSoup
  
-# ---------------------------------------------------------------------------
 # Config
-# ---------------------------------------------------------------------------
  
 HEADERS = {
     "User-Agent": (
@@ -44,9 +42,7 @@ OUTPUT_FILE = "placed_kb.json"
 NOISE_TAGS = ["script", "style", "noscript", "svg", "img",
                "meta", "link", "head"]
  
-# ---------------------------------------------------------------------------
 # Helpers
-# ---------------------------------------------------------------------------
  
 def clean_text(soup: BeautifulSoup) -> str:
     """Strip noise tags and return collapsed plain text."""
@@ -111,10 +107,8 @@ def scrape_page(key: str, url: str) -> dict:
         "links":       links,
     }
  
-# ---------------------------------------------------------------------------
 # Static fallback knowledge
 # (used when live scraping fails or as guaranteed base layer)
-# ---------------------------------------------------------------------------
  
 STATIC_KB: dict = {
     "company": {
@@ -210,10 +204,8 @@ STATIC_KB: dict = {
         },
     ],
 }
- 
-# ---------------------------------------------------------------------------
+
 # Main
-# ---------------------------------------------------------------------------
  
 def run() -> None:
     print("=" * 60)
