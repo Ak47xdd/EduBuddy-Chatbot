@@ -39,7 +39,8 @@ STATIC_FALLBACK: dict = {
         "location": "Kowdiar, Trivandrum, Kerala, India",
         "address":  "BNRA 162 A, Bhagavathi Nagar, Golf Links Road, Kowdiar P.O. Trivandrum — 695 003",
         "phone":    "+91 79075 97197",
-        "whatsapp": "https://wa.me/917907597197",
+        "whatsapp": "917907597197",
+        "email": "info@placededu.in",
     },
     "leadership": [
         {"name": "A S Abhishek",    "role": "Co-Founder & CEO"},
