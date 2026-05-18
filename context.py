@@ -154,7 +154,8 @@ def _company_text() -> str:
         f"Location: {c['location']}\n"
         f"Address: {c['address']}\n"
         f"Phone / WhatsApp: {c['phone']}\n"
-        f"WhatsApp Link: {c['whatsapp']}\n"
+        f"WhatsApp: {c['whatsapp']}\n",
+        f"Email: {c['email']}\n",
     )
  
  
