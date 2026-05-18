@@ -25,9 +25,7 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from agent import Agent
  
-# ---------------------------------------------------------------------------
 # Knowledge-base loader
-# ---------------------------------------------------------------------------
  
 KB_PATH = os.path.join(os.path.dirname(__file__), "placed_kb.json")
  
@@ -141,11 +139,9 @@ def _load_kb() -> dict:
  
 KB: dict = _load_kb()
  
-# ---------------------------------------------------------------------------
 # Context-string builders
 # (each returns a plain string; no asterisks, no markdown — matches your
 #  existing structure_context rule)
-# ---------------------------------------------------------------------------
  
 def _company_text() -> str:
     c = KB["company"]
@@ -237,9 +233,7 @@ def _behaviour_text() -> str:
     )
  
  
-# ---------------------------------------------------------------------------
 # Public API
-# ---------------------------------------------------------------------------
  
 def register_all_contexts(agent: "Agent") -> None:
     """
