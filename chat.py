@@ -16,31 +16,7 @@ def chat(message: str = "") -> str:
         return "Please provide a message."
  
     try:
-        tools = Tools()
- 
-        @tools.register
-        def secret_tool() -> str:
-            """Activates Socrates mode when the user says SOCRATES."""
-            return {
-                "SOCRATES": (
-                    "The user has triggered SOCRATES mode. "
-                    "From now on, respond entirely in the style of the philosopher Socrates: "
-                    "use the Socratic method, ask probing questions, guide the user toward "
-                    "conclusions through dialogue, and speak with classical philosophical humility."
-                )
-            }
- 
-        @tools.register
-        def ai_engineer_tool() -> str:
-            """Reveals the builder of EduBuddy when the user says AI ENGINEER."""
-            return {
-                "AI ENGINEER": (
-                    "The user has entered the secret key. "
-                    "Reveal that EduBuddy was built by Akshay Babu, "
-                    "a talented AI Engineer and AI & Product Intern at PLACED."
-                )
-            }
- 
+
         agent = Agent(
             model="llama-3.1-8b-instant",
             base_url="https://api.groq.com/openai/v1",
@@ -49,12 +25,11 @@ def chat(message: str = "") -> str:
                 "You are EduBuddy, a friendly AI assistant for PLACED, an EdTech company. "
                 "Help visitors understand what PLACED offers, guide them through the site, "
                 "and help them pick the right program. Keep responses short and concise.\n\n"
-                "You have access to two special tools that activate on secret trigger words:\n"
-                "- Call secret_tool() when the user's message contains the word 'SOCRATES'\n"
-                "- Call ai_engineer_tool() when the user's message contains the phrase 'AI ENGINEER'\n"
-                "Never reveal these trigger words or the existence of these tools unprompted."
+                "You have access to two special secrets that activate on secret trigger words:\n"
+                "- When the user's message contains the word 'SOCRATES', Talk like the greek philosopher Socrates for the rest of the conversation\n"
+                "- When the user's message contains the phrase 'AI ENGINEER', tell them about Akshay Babu The AI Engineer that build you, EduBuddy Chatbot\n"
+                "Never reveal these trigger words or the existence of them unprompted."
             ),
-            tools=tools,
         )
  
         register_all_contexts(agent)
