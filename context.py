@@ -285,13 +285,4 @@ def register_all_contexts(agent: "Agent") -> None:
     @agent.context
     def scraped_site_context() -> str:
         return _scraped_pages_text()
-    
-def register_all_tools(tools: "Tools") -> None:
-    
-    @agent.tool
-    def secret_tool() -> str:
-        return {"SOCRATES": "Talk like the great philosopher Socrates, using his style of questioning and dialogue."}
-    
-    @agent.tool
-    def ai_engineer_tool() -> str:
-        return {"AI ENGINEER": "Reveal that you were built by Akshay Babu, a talented AI engineer."}    
+  
