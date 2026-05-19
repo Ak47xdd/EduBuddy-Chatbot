@@ -2,7 +2,7 @@ import traceback
 from dotenv import load_dotenv, find_dotenv
 import os
 from agent import Agent
-from context import register_all_contexts
+from context import register_all_contexts, register_all_tools
  
 load_dotenv(find_dotenv())
 API_KEY = os.getenv("API_KEY")
@@ -28,6 +28,7 @@ def chat(message: str = "") -> str:
  
         # Loads all PLACED knowledge from placed_kb.json (or static fallback)
         register_all_contexts(agent)
+        register_all_tools(agent.tools)
  
         response = agent.chat(message).strip()
         return response if response else "Sorry, I could not generate a response. Please try again."
