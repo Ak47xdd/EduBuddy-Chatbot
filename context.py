@@ -21,9 +21,11 @@ from __future__ import annotations
 import json
 import os
 from typing import TYPE_CHECKING
+
+import agent
  
 if TYPE_CHECKING:
-    from agent import Agent
+    from agent import Agent, Tools
  
 # Knowledge-base loader
  
@@ -283,6 +285,8 @@ def register_all_contexts(agent: "Agent") -> None:
     @agent.context
     def scraped_site_context() -> str:
         return _scraped_pages_text()
+    
+def register_all_tools(tools: "Tools") -> None:
     
     @agent.tool
     def secret_tool() -> str:
