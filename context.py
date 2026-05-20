@@ -34,15 +34,11 @@ KB_PATH = os.path.join(os.path.dirname(__file__), "placed_kb.json")
 # Embedded fallback so the bot works even if scraper.py hasn't been run yet.
 STATIC_FALLBACK: dict = {
     "company": {
-        "name":     "PLACED",
-        "tagline":  "Infinite Possibilities. Definite Outcome.",
-        "type":     "EdTech (Education Technology)",
-        "focus":    "Placement Assistance for schools and colleges; career readiness, government exam prep, higher studies.",
-        "location": "Kowdiar, Trivandrum, Kerala, India",
-        "address":  "BNRA 162 A, Bhagavathi Nagar, Golf Links Road, Kowdiar P.O. Trivandrum — 695 003",
-        "phone":    "+91 79075 97197",
-        "whatsapp": "917907597197",
-        "email": "info@placededu.in",
+        "linkedin": "yes, you can find the links on the bottom",
+        "instagram": "yes, you can find the links on the bottom",
+        "youtube": "yes, you can find the links on the bottom",
+        "telegram": "yes, you can find the links on the bottom",
+        "playstore": "yes, you can find the links on the bottom"
     },
     "leadership": [
         {"name": "A S Abhishek",    "role": "Co-Founder & CEO"},
@@ -57,12 +53,12 @@ STATIC_FALLBACK: dict = {
         "playstore": "https://lynk.page.link/ofUJ",
     },
     "navigation": {
-        "Home":      "https://www.placededu.com/",
-        "About Us":  "https://www.placededu.com/about",
-        "Programs":  "https://www.placededu.com/programs",
-        "Mentors":   "https://www.placededu.com/mentors",
-        "Alumni":    "https://www.placededu.com/alumni",
-        "Book Demo": "https://www.placededu.com/signup",
+        "Home": "contains the main landing page with scrolling sections that explain the company, its programs, and its information",
+        "About Us": "About the company, its vision, and its mission",
+        "Programs": "Detailed information about the three main programs offered by PLACED: Corporate Readiness, Public Exam Foundation, and Academic Navigator",
+        "Mentors": "Information about the mentors associated with PLACED",
+        "Alumni": "Success stories of alumni who have benefited from PLACED's programs",
+        "Book Demo": "A call-to-action for institutions to book a demo of PLACED's offerings"
     },
     "journey": [
         {"step": 1, "title": "Apply",    "desc": "Submit your profile and pass the diagnostic assessment."},
@@ -86,7 +82,6 @@ STATIC_FALLBACK: dict = {
             "key":      "corporate_readiness",
             "name":     "Corporate Readiness",
             "focus":    "Placement Focus",
-            "url":      "https://www.placededu.com/programs/corporate-readiness",
             "desc":     (
                 "Prepares students for real placement success covering Quantitative Aptitude, "
                 "Logical Reasoning, Verbal Ability, and Mock Simulations."
@@ -97,7 +92,6 @@ STATIC_FALLBACK: dict = {
             "key":      "public_exam",
             "name":     "Public Exam Foundation",
             "focus":    "Govt. Exam Focus",
-            "url":      "https://www.placededu.com/programs/public-exam",
             "desc":     (
                 "Builds a strong foundation for highly competitive government exams through "
                 "timed drills and concept-based exercises for national-level government careers."
@@ -108,7 +102,6 @@ STATIC_FALLBACK: dict = {
             "key":      "academic_navigator",
             "name":     "Academic Navigator",
             "focus":    "Higher Studies",
-            "url":      "https://www.placededu.com/programs/academic-navigator",
             "desc":     (
                 "Guides students through postgraduate programs, professional courses, and flexible "
                 "learning pathways to make informed academic decisions."
@@ -143,8 +136,8 @@ def _load_kb() -> dict:
 KB: dict = _load_kb()
  
 # Context-string builders
-# (each returns a plain string; no asterisks, no markdown — matches your
-#  existing structure_context rule)
+# (each returns a plain string; no asterisks, no markdown — matches
+# existing structure_context rule)
  
 def _company_text() -> str:
     c = KB["company"]
@@ -205,7 +198,7 @@ def _socials_text() -> str:
     s = KB["socials"]
     lines = ["PLACED Social Media & Apps:"]
     for platform in s.items():
-        lines.append(f"  {platform.capitalize()}")
+        lines.append(f"  {platform}")
     return "\n".join(lines)
  
  
