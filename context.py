@@ -130,7 +130,7 @@ def _load_kb() -> dict:
             # Merge scraped page texts into the static layer for richer answers.
             kb = raw.get("static", STATIC_FALLBACK).copy()
             kb["scraped_pages"] = [
-                {"key": p["key"], "url": p["url"], "text": p.get("text", "")}
+                {"key": p["key"], "text": p.get("text", "")}
                 for p in raw.get("scraped", [])
                 if p.get("status") == "ok"
             ]
@@ -173,7 +173,6 @@ def _programs_text() -> str:
     for p in KB["programs"]:
         lines.append(
             f"\n{p['name']} ({p['focus']})\n"
-            f"  URL: {p['url']}\n"
             f"  Description: {p['desc']}\n"
             f"  Ideal for: {p['ideal_for']}"
         )
@@ -196,17 +195,17 @@ def _about_text() -> str:
  
  
 def _navigation_text() -> str:
-    lines = ["Site Navigation (page name → URL):"]
-    for name, url in KB["navigation"].items():
-        lines.append(f"  {name}: {url}")
+    lines = ["Site Navigation (page name):"]
+    for name in KB["navigation"].items():
+        lines.append(f"{name}")
     return "\n".join(lines)
  
  
 def _socials_text() -> str:
     s = KB["socials"]
-    lines = ["PLACED Social Media & App Links:"]
-    for platform, url in s.items():
-        lines.append(f"  {platform.capitalize()}: {url}")
+    lines = ["PLACED Social Media & Apps:"]
+    for platform in s.items():
+        lines.append(f"  {platform.capitalize()}")
     return "\n".join(lines)
  
  
@@ -220,7 +219,7 @@ def _scraped_pages_text() -> str:
         # Trim to ~600 chars per page to stay within token budgets
         text = page["text"][:600].strip()
         if text:
-            chunks.append(f"[Page: {page['key']} — {page['url']}]\n{text}")
+            chunks.append(f"[Page: {page['key']}]\n{text}")
     return "\n\n".join(chunks) if chunks else "Scraped content empty."
  
  
