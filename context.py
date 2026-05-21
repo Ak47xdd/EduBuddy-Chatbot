@@ -151,7 +151,6 @@ def _company_text() -> str:
         f"Email: {c['email']}\n",
     )
  
- 
 def _leadership_text() -> str:
     lines = ["Leadership Team:"]
     for person in KB["leadership"]:
