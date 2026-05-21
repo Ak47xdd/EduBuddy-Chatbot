@@ -131,7 +131,6 @@ def _load_kb() -> dict:
             pass
     return STATIC_FALLBACK
  
- 
 KB: dict = _load_kb()
  
 # Context-string builders
