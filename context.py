@@ -167,7 +167,6 @@ def _programs_text() -> str:
         )
     return "\n".join(lines)
  
- 
 def _journey_text() -> str:
     lines = ["The PLACED Student Journey (4 steps):"]
     for step in KB["journey"]:
