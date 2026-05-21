@@ -173,7 +173,6 @@ def _journey_text() -> str:
         lines.append(f"  Step {step['step']} — {step['title']}: {step['desc']}")
     return "\n".join(lines)
  
- 
 def _about_text() -> str:
     a = KB["about"]
     return (
