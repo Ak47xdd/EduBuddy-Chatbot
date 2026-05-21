@@ -157,7 +157,6 @@ def _leadership_text() -> str:
         lines.append(f"  - {person['name']} — {person['role']}")
     return "\n".join(lines)
  
- 
 def _programs_text() -> str:
     lines = ["Programs offered by PLACED:"]
     for p in KB["programs"]:
