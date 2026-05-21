@@ -112,7 +112,6 @@ STATIC_FALLBACK: dict = {
     "scraped_pages": [],
 }
  
- 
 def _load_kb() -> dict:
     """Load placed_kb.json; fall back to STATIC_FALLBACK if unavailable."""
     if os.path.exists(KB_PATH):
