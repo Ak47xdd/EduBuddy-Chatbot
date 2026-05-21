@@ -180,7 +180,6 @@ def _about_text() -> str:
         f"Mission: {a['mission']}"
     )
  
- 
 def _navigation_text() -> str:
     lines = ["Site Navigation (page name):"]
     for name in KB["navigation"].items():
