@@ -46,11 +46,11 @@ STATIC_FALLBACK: dict = {
         {"name": "Vigneswaran A R", "role": "Co-Founder & CAO"},
     ],
     "socials": {
-        "linkedin":  "https://www.linkedin.com/company/placedtech/",
-        "instagram": "https://www.instagram.com/placed.official",
-        "youtube":   "https://www.youtube.com/@placed.official",
-        "telegram":  "https://t.me/placed_community",
-        "playstore": "https://lynk.page.link/ofUJ",
+        "linkedin": "yes, you can find the links on the bottom",
+        "instagram": "yes, you can find the links on the bottom",
+        "youtube": "yes, you can find the links on the bottom",
+        "telegram": "yes, you can find the links on the bottom",
+        "playstore": "yes, you can find the links on the bottom"
     },
     "navigation": {
         "Home": "contains the main landing page with scrolling sections that explain the company, its programs, and its information",
@@ -209,7 +209,7 @@ def _scraped_pages_text() -> str:
         return "No live scraped content available. Using static knowledge base."
     chunks: list[str] = []
     for page in pages:
-        # Trim to ~600 chars per page to stay within token budgets
+        # Trim to 600 chars per page to stay within token budgets
         text = page["text"][:600].strip()
         if text:
             chunks.append(f"[Page: {page['key']}]\n{text}")
