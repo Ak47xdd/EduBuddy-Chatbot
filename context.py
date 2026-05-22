@@ -56,7 +56,7 @@ STATIC_FALLBACK: dict = {
         "Home": "contains the main landing page with scrolling sections that explain the company, its programs, and its information",
         "About Us": "About the company, its vision, and its mission",
         "Programs": "Detailed information about the three main programs offered by PLACED: Corporate Readiness, Public Exam Foundation, and Academic Navigator",
-        "Mentors": "Information about the mentors associated with PLACED",
+        "Mentors": "Information about the mentors associated with PLACED, the mentors are :\nTess - General Awareness Expert\nRishi - General Awareness Expert\nJishnu - General Awareness Expert\nPrem Harshan - Soft Skills and Verbal Ability Coach\nIbnu Syed S - Industry expert\nAnantha Krishnan P - Industry expert\nAnoushka V - Industry expert\nMichelle - Technical and Aptitude Expert\nVarun Menon - Soft Skill and General Awareness Expert\nNayana T - Aptitude Expert\nNandhana - Aptitude Expert\nNeethu T - Aptitude Expert\nJithesh Krishnan R - Recruitment Coach\nMithun - Aptitude Expert\nGeorge - Aptitude Expert\nTaniya Eliza Thomas - General Awareness Expert",
         "Alumni": "Success stories of alumni who have benefited from PLACED's programs",
         "Book Demo": "A call-to-action for institutions to book a demo of PLACED's offerings"
     },
