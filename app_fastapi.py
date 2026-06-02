@@ -8,7 +8,6 @@ from chat import *
 
 app = FastAPI()
 
-# 1. Combined all your origins into one clean list
 origins = [
     "https://www.placededu.com", 
     "https://placededu.com",
@@ -22,7 +21,6 @@ apis = cycle([
     "https://edubuddy-chatbot.onrender.com"
 ])
 
-# 2. Only ONE middleware block
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
@@ -30,25 +28,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-@app.api_route("/{path:path}", methods=["GET", "POST"])
-async def round_robin_proxy(request: Request, path: str):
-    # Select the next server in the cycle
-    next_server = next(apis)
-    target_url = f"{next_server}/{path}"
-    
-    # Read the incoming request body
-    body = await request.body()
-    
-    # Forward the request using httpx
-    async with httpx.AsyncClient() as client:
-        response = await client.request(
-            method=request.method,
-            url=target_url,
-            headers=dict(request.headers),
-            content=body
-        )
-        return response.content
 
 @app.get("/")
 async def main():
@@ -61,12 +40,28 @@ class PredictRequest(BaseModel):
 async def cron_job():
     return {"message": "Cron job executed successfully!"}
 
-# 3. CRITICAL FIX: Changed from /predict to /chat to match your Next.js frontend
 @app.post("/chat")
 async def predict(data: PredictRequest):
     text = data.message
     response = chat(text)
     return {"answer": response}
+
+@app.api_route("/{path:path}", methods=["GET", "POST"])
+async def round_robin_proxy(request: Request, path: str):
+    
+    next_server = next(apis)
+    target_url = f"{next_server}/{path}"
+    
+    body = await request.body()
+    
+    async with httpx.AsyncClient() as client:
+        response = await client.request(
+            method=request.method,
+            url=target_url,
+            headers=dict(request.headers),
+            content=body
+        )
+        return response.content
 
 if __name__ == "__main__":
     uvicorn.run("app_fastapi:app", host='0.0.0.0', port=5000, workers=4)
