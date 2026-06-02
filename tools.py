@@ -59,7 +59,6 @@ class Tools:
             "type": "object",
             "properties": {},
             "required": [],
-            # FIX: removed "additionalProperties": False — Groq rejects it
         }
  
         for name, param in sig.parameters.items():
@@ -76,12 +75,9 @@ class Tools:
         return {
             "type": "function",
             "function": {
-                # FIX: use func.__name__ as the tool name (not __doc__)
-                # __doc__ is used as the description instead
                 "name": func.__name__,
                 "description": func.__doc__ or "No description provided.",
                 "parameters": parameters,
-                # FIX: removed "strict": True — not supported by Groq
             },
         }
  
