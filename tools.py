@@ -2,7 +2,7 @@ from dataclasses import dataclass, field
 from typing import Any, Callable, Annotated, get_origin, get_args, Union, Final
 import inspect
 import json
- 
+
 @dataclass
 class Tools:
     TOOL_SCHEMA_ATTR: Final[str] = "__tool_schema__"
