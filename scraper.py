@@ -8,6 +8,9 @@ Run:  python scraper.py
 Output: placed_kb.json   (consumed by context.py)
  
 Dependencies:  pip install requests beautifulsoup4
+
+This script has been run, please dont run unless you want 
+to update the knowledge base.
 """
  
 import json
